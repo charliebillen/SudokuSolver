@@ -42,7 +42,11 @@ public static class BruteForceSolver
     private static bool IsValidGuess(int guess, int[,] puzzle, int row, int col)
     {
         var size = puzzle.GetLength(0);
-
+        
+        var subgridSize = (int)Math.Sqrt(size);
+        var subgridStartRow = row - row % subgridSize;
+        var subgridStartCol = col - col % subgridSize;
+        
         for (var i = 0; i < size; i++)
         {
             // check cols in same row
@@ -52,23 +56,14 @@ public static class BruteForceSolver
             // check rows in same col
             if (puzzle[i, col] == guess)
                 return false;
+            
+            // check subgrid
+            var subgridRow = subgridStartRow + i / subgridSize;
+            var subgridCol = subgridStartCol + i % subgridSize;
+            if (puzzle[subgridRow, subgridCol] == guess)
+                return false;
         }
 
-        // check subgrid
-        var subgridSize = (int)Math.Sqrt(size);
-
-        var subgridStartRow = row - row % subgridSize;
-        var subgridStartCol = col - col % subgridSize;
-
-        for (var i = 0; i < subgridSize; i++)
-        {
-            for (var j = 0; j < subgridSize; j++)
-            {
-                if (puzzle[subgridStartRow + i, subgridStartCol + j] == guess)
-                    return false;
-            }
-        }
-        
         return true;
     }
 }
