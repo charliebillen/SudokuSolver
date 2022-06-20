@@ -2,12 +2,7 @@ namespace SudokuSolver;
 
 public static class BruteForceSolver
 {
-    public static void Solve(int[,] puzzle)
-    {
-        Solve(puzzle, 0, 0);
-    }
-
-    private static bool Solve(int[,] puzzle, int row, int col)
+    public static bool Solve(int[,] puzzle, int row = 0, int col = 0)
     {
         var size = puzzle.GetLength(0);
 
@@ -15,10 +10,7 @@ public static class BruteForceSolver
             return true;
 
         if (col == size)
-        {
-            row++;
-            col = 0;
-        }
+            return Solve(puzzle, row + 1, 0);
 
         if (puzzle[row, col] > 0)
             return Solve(puzzle, row, col + 1);
