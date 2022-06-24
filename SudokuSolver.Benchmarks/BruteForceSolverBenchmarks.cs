@@ -27,5 +27,8 @@ public class BruteForceSolverBenchmarks
 
     [Benchmark]
     public void Solve()
-        => BruteForceSolver.Solve(_puzzle);
+    {
+        var solver = new BruteForceSolver();
+        solver.Solve(_puzzle);
+    }
 }

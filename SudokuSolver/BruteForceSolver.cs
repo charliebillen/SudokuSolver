@@ -1,8 +1,10 @@
 namespace SudokuSolver;
 
-public static class BruteForceSolver
+public class BruteForceSolver
 {
-    public static bool Solve(int[,] puzzle, int row = 0, int col = 0)
+    public int Backtracks = 0;
+
+    public bool Solve(int[,] puzzle, int row = 0, int col = 0)
     {
         var size = puzzle.GetLength(0);
 
@@ -24,14 +26,14 @@ public static class BruteForceSolver
     
             if (Solve(puzzle, row, col + 1))
                 return true;
-
-            puzzle[row, col] = 0;
         }
 
+        Backtracks++;
+        puzzle[row, col] = 0;
         return false;
     }
 
-    private static bool IsValidGuess(int guess, int[,] puzzle, int row, int col)
+    private bool IsValidGuess(int guess, int[,] puzzle, int row, int col)
     {
         var size = puzzle.GetLength(0);
         
