@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuSolver", "SudokuSolve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuSolver.Tests", "SudokuSolver.Tests\SudokuSolver.Tests.csproj", "{6766D981-E3A8-45F4-ABDE-65E691A6758C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuSolver.Benchmarks", "SudokuSolver.Benchmarks\SudokuSolver.Benchmarks.csproj", "{81823595-E0A3-4060-A08C-42C05C19533F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{6766D981-E3A8-45F4-ABDE-65E691A6758C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6766D981-E3A8-45F4-ABDE-65E691A6758C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6766D981-E3A8-45F4-ABDE-65E691A6758C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81823595-E0A3-4060-A08C-42C05C19533F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81823595-E0A3-4060-A08C-42C05C19533F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81823595-E0A3-4060-A08C-42C05C19533F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81823595-E0A3-4060-A08C-42C05C19533F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
