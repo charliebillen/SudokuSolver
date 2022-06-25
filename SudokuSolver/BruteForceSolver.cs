@@ -2,59 +2,65 @@ namespace SudokuSolver;
 
 public class BruteForceSolver
 {
+    private readonly int[,] _puzzle;
+    private readonly int _puzzleSize;
+    private readonly int _squareSize;
+
     public int Backtracks = 0;
 
-    public bool Solve(int[,] puzzle, int row = 0, int col = 0)
+    public BruteForceSolver(int[,] puzzle)
     {
-        var size = puzzle.GetLength(0);
+        _puzzle = puzzle;
+        _puzzleSize = _puzzle.GetLength(0);
+        _squareSize = (int)Math.Sqrt(_puzzleSize);
+    }
 
-        if (row == size - 1 && col == size)
+    public bool Solve(int row = 0, int col = 0)
+    {
+        if (row == _puzzleSize - 1 && col == _puzzleSize)
             return true;
 
-        if (col == size)
-            return Solve(puzzle, row + 1, 0);
+        if (col == _puzzleSize)
+            return Solve(row + 1, 0);
 
-        if (puzzle[row, col] > 0)
-            return Solve(puzzle, row, col + 1);
+        if (_puzzle[row, col] > 0)
+            return Solve(row, col + 1);
 
-        for (var g = 1; g <= size; g++)
+        for (var g = 1; g <= _puzzleSize; g++)
         {
-            if (!IsValidGuess(g, puzzle, row, col)) 
+            if (!IsValidGuess(g, row, col)) 
                 continue;
             
-            puzzle[row,col] = g;
+            _puzzle[row,col] = g;
     
-            if (Solve(puzzle, row, col + 1))
+            if (Solve(row, col + 1))
                 return true;
         }
 
         Backtracks++;
-        puzzle[row, col] = 0;
+        _puzzle[row, col] = 0;
         return false;
     }
 
-    private bool IsValidGuess(int guess, int[,] puzzle, int row, int col)
+    private bool IsValidGuess(int guess, int row, int col)
     {
-        var size = puzzle.GetLength(0);
-        
-        var subgridSize = (int)Math.Sqrt(size);
-        var subgridStartRow = row - row % subgridSize;
-        var subgridStartCol = col - col % subgridSize;
-        
-        for (var i = 0; i < size; i++)
+        var squareStartRow = row - row % _squareSize;
+        var squareStartCol = col - col % _squareSize;
+
+        for (var i = 0; i < _puzzleSize; i++)
         {
             // check cols in same row
-            if (puzzle[row, i] == guess)
+            if (_puzzle[row, i] == guess)
                 return false;
-            
+
             // check rows in same col
-            if (puzzle[i, col] == guess)
+            if (_puzzle[i, col] == guess)
                 return false;
-            
+
             // check subgrid
-            var subgridRow = subgridStartRow + i / subgridSize;
-            var subgridCol = subgridStartCol + i % subgridSize;
-            if (puzzle[subgridRow, subgridCol] == guess)
+            var squareRow = squareStartRow + i / _squareSize;
+            var squareCol = squareStartCol + i % _squareSize;
+            if (_puzzle[squareRow, squareCol] == guess)
                 return false;
         }
 

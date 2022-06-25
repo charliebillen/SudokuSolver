@@ -13,7 +13,7 @@ public class BruteForceSolverTests
             { 0 }
         };
 
-        new BruteForceSolver().Solve(puzzle);
+        new BruteForceSolver(puzzle).Solve();
 
         var expected = new[,]
         {
@@ -31,7 +31,7 @@ public class BruteForceSolverTests
             { 2, 1 }
         };
 
-        new BruteForceSolver().Solve(puzzle);
+        new BruteForceSolver(puzzle).Solve();
 
         var expected = new[,]
         {
@@ -52,7 +52,7 @@ public class BruteForceSolverTests
             { 0, 0, 4, 0 }
         };
 
-        new BruteForceSolver().Solve(puzzle);
+        new BruteForceSolver(puzzle).Solve();
 
         var expected = new[,]
         {
@@ -80,8 +80,8 @@ public class BruteForceSolverTests
             { 0, 0, 1, 0, 0, 0, 8, 0, 4 }
         };
 
-        var solver = new BruteForceSolver();
-        solver.Solve(puzzle);
+        var solver = new BruteForceSolver(puzzle);
+        solver.Solve();
 
         var expected = new[,]
         {
@@ -142,7 +142,7 @@ public class BruteForceSolverTests
             { 14, 05, 00, 00, 13, 11, 04, 00, 06, 12, 00, 02, 00, 07, 00, 00 }
         };
 
-        var solver = new BruteForceSolver();
-        solver.Solve(puzzle);
+        var solver = new BruteForceSolver(puzzle);
+        solver.Solve();
     }
 }
