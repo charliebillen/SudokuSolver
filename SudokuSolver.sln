@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "Runner\Runner.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexdokuConverter", "HexdokuConverter\HexdokuConverter.csproj", "{DE6E982B-8B1E-46ED-B87F-54F9F7104A38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphadokuConverter", "AlphadokuConverter\AlphadokuConverter.csproj", "{BC401620-F4C9-4227-A86D-7D6847CC6F03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{DE6E982B-8B1E-46ED-B87F-54F9F7104A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE6E982B-8B1E-46ED-B87F-54F9F7104A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE6E982B-8B1E-46ED-B87F-54F9F7104A38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC401620-F4C9-4227-A86D-7D6847CC6F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC401620-F4C9-4227-A86D-7D6847CC6F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC401620-F4C9-4227-A86D-7D6847CC6F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC401620-F4C9-4227-A86D-7D6847CC6F03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
