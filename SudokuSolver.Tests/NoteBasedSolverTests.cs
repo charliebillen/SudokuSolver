@@ -13,8 +13,10 @@ public class NoteBasedSolverTests
             { 0 }
         };
 
-        new NoteBasedSolver(puzzle).Solve();
+        var solver = new NoteBasedSolver(puzzle);
+        var solved = solver.Solve();
 
+        Assert.True(solved);
         var expected = new[,]
         {
             { 1 }
@@ -31,8 +33,10 @@ public class NoteBasedSolverTests
             { 2, 1 }
         };
 
-        new NoteBasedSolver(puzzle).Solve();
+        var solver = new NoteBasedSolver(puzzle);
+        var solved = solver.Solve();
 
+        Assert.True(solved);
         var expected = new[,]
         {
             { 1, 2 },
@@ -52,8 +56,10 @@ public class NoteBasedSolverTests
             { 0, 0, 4, 0 }
         };
 
-        new NoteBasedSolver(puzzle).Solve();
+        var solver = new NoteBasedSolver(puzzle);
+        var solved = solver.Solve();
 
+        Assert.True(solved);
         var expected = new[,]
         {
             { 1, 4, 2, 3 },
@@ -81,8 +87,9 @@ public class NoteBasedSolverTests
         };
 
         var solver = new NoteBasedSolver(puzzle);
-        solver.Solve();
+        var solved = solver.Solve();
 
+        Assert.True(solved);
         var expected = new[,]
         {
             { 8, 2, 4, 6, 1, 7, 9, 5, 3 },
@@ -121,8 +128,10 @@ public class NoteBasedSolverTests
             { 14, 05, 00, 00, 13, 11, 04, 00, 06, 12, 00, 02, 00, 07, 00, 00 }
         };
 
-        new NoteBasedSolver(puzzle).Solve();
-            
+        var solver = new NoteBasedSolver(puzzle);
+        var solved = solver.Solve();
+
+        Assert.True(solved);
         var expected = new[,]
         {
             { 05, 12, 06, 04, 03, 13, 15, 11, 09, 02, 16, 07, 01, 14, 08, 10 },
@@ -168,8 +177,10 @@ public class NoteBasedSolverTests
             { 15, 00, 05, 00, 00, 08, 00, 16, 00, 00, 06, 00, 00, 01, 00, 00 }
         };
 
-        new NoteBasedSolver(puzzle).Solve();
-            
+        var solver = new NoteBasedSolver(puzzle);
+        var solved = solver.Solve();
+
+        Assert.True(solved);
         var expected = new[,]
         {
             { 01, 16, 08, 15, 05, 02, 12, 11, 04, 14, 07, 09, 13, 06, 03, 10 },
@@ -192,7 +203,7 @@ public class NoteBasedSolverTests
         puzzle.Should().BeEquivalentTo(expected);
     }
     
-    [Fact(Skip = "Not working yet")]
+    [Fact(Skip = "Unsolvable by this method")]
     public void Solve_GivenAnUnsolvedPuzzleOf25x25Size_SolvesIt()
     {
         var puzzle = new[,]
@@ -224,27 +235,9 @@ public class NoteBasedSolverTests
             { 00, 15, 09, 00, 22, 08, 00, 05, 00, 00, 10, 00, 00, 00, 00, 00, 24, 25, 00, 00, 18, 00, 17, 00, 01 },
         };
 
-        new NoteBasedSolver(puzzle).Solve();
-            
-        var expected = new[,]
-        {
-            { 01, 00, 00, 00, 00, 00, 12, 11, 04, 00, 07, 09, 00, 06, 00, 00 },
-            { 00, 00, 12, 00, 10, 00, 14, 00, 16, 00, 01, 00, 05, 00, 00, 00 },
-            { 00, 00, 00, 00, 00, 00, 16, 00, 00, 00, 00, 11, 14, 00, 02, 04 },
-            { 00, 00, 04, 00, 08, 00, 00, 00, 00, 00, 13, 00, 00, 00, 15, 00 },
-            { 14, 00, 00, 04, 00, 16, 09, 00, 00, 13, 00, 03, 00, 15, 00, 00 },
-            { 13, 03, 02, 00, 00, 00, 00, 12, 09, 00, 14, 06, 00, 00, 00, 00 },
-            { 10, 00, 00, 09, 07, 00, 00, 13, 00, 00, 11, 16, 00, 00, 06, 05 },
-            { 00, 01, 00, 00, 02, 00, 11, 00, 00, 05, 00, 00, 00, 00, 09, 14 },
-            { 00, 00, 00, 07, 00, 00, 00, 00, 00, 15, 00, 00, 00, 04, 10, 06 },
-            { 16, 15, 00, 00, 00, 00, 10, 06, 00, 00, 00, 13, 06, 00, 07, 11 },
-            { 00, 00, 10, 11, 00, 00, 00, 00, 12, 00, 00, 00, 09, 00, 14, 13 },
-            { 09, 00, 00, 00, 14, 00, 13, 00, 00, 11, 00, 00, 00, 00, 16, 12 },
-            { 00, 00, 00, 00, 00, 00, 06, 00, 00, 00, 00, 00, 00, 00, 13, 00 },
-            { 00, 00, 00, 06, 13, 11, 00, 14, 00, 07, 15, 00, 00, 00, 04, 00 },
-            { 02, 13, 00, 01, 15, 00, 00, 00, 14, 06, 00, 00, 11, 10, 00, 16 },
-            { 15, 00, 05, 00, 00, 06, 00, 16, 00, 00, 06, 00, 00, 01, 00, 00 }
-        };
-        puzzle.Should().BeEquivalentTo(expected);
+        var solver = new NoteBasedSolver(puzzle);
+        var solved = solver.Solve();
+
+        Assert.True(solved);
     }
 }

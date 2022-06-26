@@ -16,6 +16,19 @@ public class NoteBasedSolver
             set => _notes[(row, col)] = value;
         }
 
+        public bool AllSolved =>
+            Values.All(n => n.Count == 1);
+        
+        public int UnsolvedCount =>
+            Values.Count(n => n.Count > 1);
+
+        public IEnumerator<KeyValuePair<(int, int), HashSet<int>>> GetEnumerator() 
+            => _notes.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() 
+            => ((IEnumerable)_notes).GetEnumerator();
+        
+        
         private HashSet<int> GetOrCreate((int, int) key)
         {
             if (!_notes.ContainsKey(key))
@@ -23,12 +36,6 @@ public class NoteBasedSolver
                 
             return _notes[key];
         }
-
-        public IEnumerator<KeyValuePair<(int, int), HashSet<int>>> GetEnumerator() 
-            => _notes.GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator() 
-            => ((IEnumerable)_notes).GetEnumerator();
     }
     
     private readonly int[,] _puzzle;
@@ -46,15 +53,16 @@ public class NoteBasedSolver
 
     public bool Solve()
     {
-        var complete = false;
-        do
+        var stuck = false;
+        while(!stuck)
         {
+            var before = _notes.UnsolvedCount;
             BuildNotes();
             ApplyNotes();
-            complete = _notes.Values.All(n => n.Count == 1);
-        } while (!complete);
-
-        return complete;
+            var after = _notes.UnsolvedCount;
+            stuck = before == after;
+        }
+        return _notes.AllSolved;
     }
 
     private void BuildNotes()
